@@ -1,7 +1,7 @@
 #/bin/bash
 
 function install_hab {
-    curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | sudo bash
+    curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | bash
 }
 
 function package_install {
@@ -11,7 +11,7 @@ function package_install {
     if rpm -q ${package} > /dev/null; then
         true
     else
-        sudo yum install ${package}
+        sudo yum -y install ${package}
     fi
 }
 
