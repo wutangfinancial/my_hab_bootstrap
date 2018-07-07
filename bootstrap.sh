@@ -41,7 +41,7 @@ function main {
     echo "HAB_ORIGIN: $HAB_ORIGIN"
     hab pkg install core/hab-sup/$HAB_VERSION -c stable
     hab pkg install core/hab-launcher/$HAB_LAUNCHER_VERSION -c stable
-    # add_hab_service
+    add_hab_service
     
 }
     
