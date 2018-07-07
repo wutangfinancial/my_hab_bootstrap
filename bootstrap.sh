@@ -49,5 +49,5 @@ function main {
 
     add_service
     
-    }
+}
     
