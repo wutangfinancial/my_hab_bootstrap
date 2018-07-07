@@ -1,5 +1,8 @@
 #/bin/bash
 
+# globals
+HAB_VERSION="0.57.0"
+
 function package_install {
     local package=${1}
 
@@ -42,7 +45,7 @@ function main {
     install_hab
     export HAB_ORIGIN="wutangfinancial"
     echo "HAB_ORIGIN: $HAB_ORIGIN"
-    hab pkg install core/hab-sup -c stable
+    hab pkg install core/hab-sup/$HAB_VERSION -c stable
 
     # add_hab_service
     
