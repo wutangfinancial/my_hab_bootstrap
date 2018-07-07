@@ -4,6 +4,7 @@
 
 # globals
 HAB_VERSION="0.57.0"
+HAB_LAUNCHER_VERSION="7797"
 
 function package_install {
     local package=${1}
@@ -33,9 +34,7 @@ ExecStart=/bin/hab run
 WantedBy=default.target
 EOF
 
-        # start the supervisor
-        systemctl daemon-reload
-        systemctl daemon-reexec
+        # start the supervisor at boot
         /sbin/chkconfig hab-sup on
         /sbin/service hab-sup start
     fi
@@ -50,7 +49,7 @@ function main {
     export HAB_ORIGIN="wutangfinancial"
     echo "HAB_ORIGIN: $HAB_ORIGIN"
     hab pkg install core/hab-sup/$HAB_VERSION -c stable
-
+    hab pkg install core/hab-launcher/$HAB_LAUNCHER_VERSION -c stable
     # add_hab_service
     
 }
