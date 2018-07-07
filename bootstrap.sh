@@ -1,5 +1,7 @@
 #/bin/bash
 
+# this script needs to be run via sudo or many functions will not work!
+
 # globals
 HAB_VERSION="0.57.0"
 
@@ -41,6 +43,8 @@ EOF
 
 function main {
     package_install tcpdump
+    
+    yum -y update
     
     install_hab
     export HAB_ORIGIN="wutangfinancial"
