@@ -51,3 +51,4 @@ function main {
     
 }
     
+main | tee -a /tmp/my_hab_bootstrap.log
