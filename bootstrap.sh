@@ -3,7 +3,10 @@
 # this script needs to be run via sudo or many functions will not work!
 
 # globals
-HAB_VERSION="0.58.0"
+HAB_VERSION="0.58.0"'
+# HAB 0.58.0 stable depends on cacerts 2017.09.20/20171014212239
+CACERTS_VERSION="2017.09.2"
+CACERTS_RELEASE="20171014212239"
 
 function package_install {
     local package=${1}
@@ -40,7 +43,7 @@ function add_hab_service {
 Description=Habitat Supervisor
 
 [Service]
-ExecStartPre=/bin/bash -c "/bin/systemctl set-environment SSL_CERT_FILE=/hab/pkgs/core/cacerts/2017.09.20/20171014212239/ssl/$
+ExecStartPre=/bin/bash -c "/bin/systemctl set-environment SSL_CERT_FILE=/hab/pkgs/core/cacerts/$CACERTS_VERSION/$CACERTS_RELEASE/ssl/$
 ExecStart=/bin/hab run
 
 [Install]
@@ -50,8 +53,8 @@ EOF
         # start the supervisor
         systemctl daemon-reload
         systemctl daemon-reexec
-        /sbin/chkconfig hab-sup on
-        /sbin/service hab-sup start
+        systemctl enable hab-sup.service
+        systemctl start hab-sup.service
     fi
 }
 
@@ -64,6 +67,7 @@ function main {
     export HAB_ORIGIN="wutangfinancial"
     echo "HAB_ORIGIN: $HAB_ORIGIN"
     hab pkg install core/hab-sup/$HAB_VERSION -c stable
+
     add_hab_service
     
 }
