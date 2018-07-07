@@ -43,7 +43,7 @@ function add_hab_service {
 Description=Habitat Supervisor
 
 [Service]
-ExecStartPre=/bin/bash -c "/bin/systemctl set-environment SSL_CERT_FILE=/hab/pkgs/core/cacerts/$CACERTS_VERSION/$CACERTS_RELEASE/ssl/$
+ExecStartPre=/bin/bash -c "/bin/systemctl set-environment SSL_CERT_FILE=/hab/pkgs/core/cacerts/$CACERTS_VERSION/$CACERTS_RELEASE/ssl/cert.pem"
 ExecStart=/bin/hab run
 
 [Install]
