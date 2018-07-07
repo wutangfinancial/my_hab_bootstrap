@@ -44,10 +44,10 @@ function main {
 
     package_install tcpdump
 
-    echo "Installing the hab-sup package... "
-    hab pkg install core/hab-sup -c stable
+    # echo "Installing the hab-sup package... "
+    # hab pkg install core/hab-sup -c stable
 
-    add_service
+    # add_service
     
 }
     
