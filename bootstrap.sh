@@ -23,7 +23,7 @@ function install_hab {
 
 function add_hab_service {
     # install hab-sup service
-    curl -x https://raw.githubusercontent.com/wutangfinancial/my_hab_bootstrap/master/hap-sup-initscript -o /etc/init.d/hap-sup
+    curl https://raw.githubusercontent.com/wutangfinancial/my_hab_bootstrap/master/hap-sup-initscript -o /etc/init.d/hap-sup
     chmod 755 /etc/init.d/hap-sup
 
     # start the supervisor at boot
