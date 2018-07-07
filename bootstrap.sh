@@ -3,8 +3,7 @@
 # this script needs to be run via sudo or many functions will not work!
 
 # globals
-HAB_VERSION="0.57.0"
-HAB_LAUNCHER_VERSION="7797"
+HAB_VERSION="0.58.0"
 
 function package_install {
     local package=${1}
@@ -65,7 +64,6 @@ function main {
     export HAB_ORIGIN="wutangfinancial"
     echo "HAB_ORIGIN: $HAB_ORIGIN"
     hab pkg install core/hab-sup/$HAB_VERSION -c stable
-    #hab pkg install core/hab-launcher/$HAB_LAUNCHER_VERSION -c stable
     add_hab_service
     
 }
