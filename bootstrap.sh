@@ -3,7 +3,7 @@
 # this script needs to be run via sudo or many functions will not work!
 
 # globals
-HAB_VERSION="0.58.0"'
+HAB_VERSION="0.58.0"
 # HAB 0.58.0 stable depends on cacerts 2017.09.20/20171014212239
 CACERTS_VERSION="2017.09.2"
 CACERTS_RELEASE="20171014212239"
