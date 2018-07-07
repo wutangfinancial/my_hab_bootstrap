@@ -39,13 +39,13 @@ EOF
 function main {
     install_hab
 
-    #export HAB_BLDR_URL="http://ito000604.fhc.ford.com"
-    #echo "HAB_BLDR_URL: $HAB_BLDR_URL"
+    export HAB_ORIGIN="wutangfinancial"
+    echo "HAB_ORIGIN: $HAB_ORIGIN"
 
     package_install tcpdump
 
     echo "Installing the hab-sup package... "
-    hab pkg install core/hab-sup/$HAB_VERSION -c stable
+    hab pkg install core/hab-sup -c stable
 
     add_service
     
