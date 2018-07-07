@@ -1,9 +1,5 @@
 #/bin/bash
 
-function install_hab {
-    curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | bash
-}
-
 function package_install {
     local package=${1}
 
@@ -15,7 +11,11 @@ function package_install {
     fi
 }
 
-function add_service {
+function install_hab {
+    curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | bash
+}
+
+function add_hab_service {
     # install hab-sup service
     if [[ ! -f /etc/systemd/system/hab-sup.service ]]; then
         cat << EOF > /etc/systemd/system/hab-sup.service
@@ -37,17 +37,14 @@ EOF
 }
 
 function main {
+    package_install tcpdump
+    
     install_hab
-
     export HAB_ORIGIN="wutangfinancial"
     echo "HAB_ORIGIN: $HAB_ORIGIN"
+    hab pkg install core/hab-sup -c stable
 
-    package_install tcpdump
-
-    # echo "Installing the hab-sup package... "
-    # hab pkg install core/hab-sup -c stable
-
-    # add_service
+    # add_hab_service
     
 }
     
