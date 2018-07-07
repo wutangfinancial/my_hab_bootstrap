@@ -23,21 +23,12 @@ function install_hab {
 
 function add_hab_service {
     # install hab-sup service
-    if [[ ! -f /etc/systemd/system/hab-sup.service ]]; then
-        cat << EOF > /etc/systemd/system/hab-sup.service
-[Unit]
-Description=Habitat Supervisor
-[Service]
-ExecStartPre=/bin/bash -c "/bin/systemctl set-environment SSL_CERT_FILE=/hab/pkgs/core/cacerts/2017.09.20/20171014212239/ssl/$
-ExecStart=/bin/hab run
-[Install]
-WantedBy=default.target
-EOF
+    curl -x https://raw.githubusercontent.com/wutangfinancial/my_hab_bootstrap/master/hap-sup-initscript -o /etc/init.d/hap-sup
+    chmod 755 /etc/init.d/hap-sup
 
-        # start the supervisor at boot
-        /sbin/chkconfig hab-sup on
-        /sbin/service hab-sup start
-    fi
+    # start the supervisor at boot
+    /sbin/chkconfig hab-sup on
+    /sbin/service hab-sup start
 }
 
 function main {
