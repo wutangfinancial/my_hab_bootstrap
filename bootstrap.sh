@@ -11,7 +11,7 @@ function package_install {
     if rpm -q ${package} > /dev/null; then
         true
     else
-        zypper --non-interactive in ${package}
+        sudo yum install ${package}
     fi
 }
 
