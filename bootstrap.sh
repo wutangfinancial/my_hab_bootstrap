@@ -60,6 +60,7 @@ EOF
 
 function main {
     package_install tcpdump
+    package_install telnet
     
     yum -y update
     
